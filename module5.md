@@ -6,46 +6,43 @@ Module Goal: Build a simple API that returns JSON and XML.
 
 - Download [POSTman](https://www.getpostman.com/) OR [Fiddler](http://www.telerik.com/fiddler) 
 
+<br><br>
+
 ## Setting up the MVC API project
 
-1. In Visual Studio File-> New Project -> .NET Core -> ASP.NET Core Web Application -> Web API
+*Option 1: Open new project with Visual Studio*
+- Create a new ASP.NET Core App by go to File New Project -> .NET Core -> ASP.NET Core Web Application -> API and named it as `WebAppApi` 
 
-![image](https://cloud.githubusercontent.com/assets/2546640/23528014/0cac4536-ff4d-11e6-8fb6-2af22ce4d3e7.png)
+// create-web-api
 
-Or you can use the dotnet CLI 
-
-`dotnet new webapi ` 
-
-
-**Add a Model**
-
-2. Create a folder called `Models` and create a class called `Products` in that folder:
-
-  ```C#
-  namespace Products.Models
-{
-    public class Products
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-    }
-}
-
-  ```
-**Add a Controller**
-3. In the Controller folder create a class called `ProductsController`.
-4. Add an attribute route `[Route("/api/[controller]")]` to the `ProductsController` class:
-
-  ```C#
-  [Route("/api/[controller]")]
-  public class ProductsController
-  {
-
-  }
-  ```
+*Option 2: Open new project with .Net CLI*
+- Again, create a directory named "WebAppApi" and in the folder use the command below to create a Web App with command line.
   
-5. Add a `Get` method to `ProductsController` that returns a `string` "Hello API World" with an attribute route
+    ```
+    mkdir WebAppApi
+    cd WebAppApi
+    dotnet new webapi
+    code .
+    ```
+> **Note:** This module require you to create project with Visual Studio, *Option 2* is just an additional information 
+
+<br><br>
+
+## Add a Model
+
+> **Revision:** You had learned how to create a Model in module 4. Now, try to create a model folder and create a class named `Products` in that folder with thr attributes given below:
+
+  ```C#
+       int - id 
+       string - name
+  ```
+
+<br><br>
+
+## Add a Controller
+> **Revision:** You had learned how to create a Controller in module 4. Now, in the controller folder and create a controller named `ProductsController`
+
+- Add route attribute `[Route("/api/[controller]")]`and a get method to `ProductsController` that return "Hello World" string.
 
   ```C#
   [Route("/api/[controller]")]
@@ -56,7 +53,11 @@ Or you can use the dotnet CLI
   }
   ```
 
-6. Run the application and navigate to `/api/products`, it should return the string "Hello World".
+  // add-get-api
+
+- Run the application and navigate to `/api/products`, it should return the string "Hello World".
+
+<br><br>
 
 ## Returning JSON from the controller
 

@@ -1,43 +1,43 @@
-# Module 3: Create a Form 
+# Module 4: Create a Form 
 
 *Module goal: 
 - *Learn how to create a Form with ASP.NET Core*
 - *Overview of the to ASP.NET Core Web Application template*
 - *Introduction to [Web API](https://docs.asp.net/en/latest/tutorials/first-web-api.html)*
 
-## Create a new web Application
-- Open up Visual Studio
-- Create a new ASP.NET Core application 
+## Create a new Web Application
+*Option 1: Open new project with Visual Studio*
+- Create a new ASP.NET Core App by go to File New Project ->.NETCore -> ASP.NET Core Web Application (.NET Core) and named it as `MusicStore` 
 
-    Go to File New Project ->.NETCore -> ASP.NET Core Web Application (.NET Core)
-    ![image](https://cloud.githubusercontent.com/assets/2546640/23097413/12b3d5de-f601-11e6-83e7-548dddd63159.png)
-   
-- Enter the name MusicStore
-- Select the Web Application template
-![image](https://cloud.githubusercontent.com/assets/2546640/23229530/a1022f06-f90e-11e6-8a57-5e6861c53d8a.PNG)
-- Click Change authentication and Select Individual User Accounts
-![image](https://cloud.githubusercontent.com/assets/2546640/23229622/f24133a8-f90e-11e6-8fae-a1652cab2478.PNG)
+ ![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module4-gif/create-web-app-mvc.gif)
 
-
-**This can also be done in the commandline with**
+*Option 2: Open new project with .Net CLI*
+- Again, create a directory named "MyWebApp" and in the folder use the command below to create a Web App with command line.
   
     ```
+    mkdir MusicStore
+    cd MusicStore
     dotnet new mvc
+    code .
     ```
+> **Note:** This module require you to create project with Visual Studio, *Option 2* is just an additional information
+
 ### Create a Model 
-Make a list of Music albums
-- Right click on the Model folder --> Add --> Class --> albums
+- We need to make a model for Album in order to create it
+- Right click on the Model folder --> Add --> Class --> Albums
 ```C#
-  public class albums
+  public class Albums
     {
-        public int ID { get; set; }
-        public String Artist { get; set; }
-        public String Album { get; set; }
-        public String Genre { get; set; }
-        public DateTime ReleaseDate { get; set; }
-        public decimal Price { get; set; }
+        public int id { get; set; }
+        public String name { get; set; }
+        public String artist { get; set; }
+        public String genre { get; set; }
+        public DateTime release_date { get; set; }
+        public decimal price { get; set; }
     }
 ```
+![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module4-gif/create-album-model.gif)
+
 ### Create a controller 
 - Right click on the Controller folder --> Add --> scaffolded items 
 - Select the MVC Controller with Views, using Entity Framework 

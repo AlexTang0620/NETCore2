@@ -16,28 +16,26 @@
 
     Go to File New Project ->.NETCore -> ASP.NET Core Web Application (.NET Core) and choose Empty project.
     
-    // TODO: Do a GIF showing how to Create new Web App Project
+    ![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/open-new-empty-web.gif)
     
 
 *Option 2: Open new project with .Net CLI*
 - Again, create a directory named "MyWebApp" and in the folder use the command below to create a Web App with command line.
   
     ```
-    // Making Directory
     mkdir MyWebApp
-    // Go into the Directory
     cd MyWebApp
-    // Initialize new Web Application with .Net CLI
     dotnet new web
-    // Open the directory in Visual Studio Code
     code .
     ```
+> **Note:** This module require you to create project with Visual Studio, *Option 2* is just an additional information
+
 <br><br>
      
 ## Running the application under IIS or on Kestrel 
 - Change the Debug drop down in the toolbar to the application name
     
-    // TODO: Do a GIF Show Changing Debug Options to App name in the Debug dropdown
+ ![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/iss-to=app.gif)
 
 - Run the application and navigate to the root. It should show the hello world middleware.
 - Change the port to `8081` by adding a call to `UseUrls` in the `Program.cs`:
@@ -58,10 +56,13 @@
         }
     }
    ```
+
+    ![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/change-program-cs.gif)
+   
 - Navigate to the project properties (by right clicking on the project, and selection `Properties`)
 - Go to the `Debug` tab --> Application properties--> Debug and change `Launch Browser` to `http://localhost:8081`
    
-   // TODO: Do a GIF show how to change the Launch Browser url properties
+   ![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/set-localhost-in-debug.gif)
 
 - Run the application and navigate to the root. It should show the hello world middleware running on port 8081.
 
@@ -71,29 +72,17 @@
 ## Using the Middleware
 
 ### Serving static Pages
-- Add the `Microsoft.AspNetCore.StaticFiles` package to `csproj`: 
+- Add the `Microsoft.AspNetCore.StaticFiles` package to project: 
 
-*Option 1: Edit by hand*
+*Use NuGet package manager*
 
-*To edit your csproj in Visual Studio: Right click on your application name and select edit csproj*
+- Open NuGet Package Manager from Tools->NuGet Package Manager->Manage
 
-// TODO: Add a GIF of how to open csproj files in Visual Studio
-
-- Add the line below into your ItemGroup
-  ```XML
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.0" />
-    </ItemGroup>
-  ```
-- Save `csproj`. Visual Studio and run `dotnet restore` in your command line to restore packages.
-
-*Option 2: Use NuGet package manager*
-
-// TODO: Add a GIF of how to open NuGet Package Manager from Tools->NuGet Package Manager->Manage
+![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/nuget.gif)
 
 - Go to `Startup.cs` in the `Configure` method and add `UseStaticFiles` before the hello world middleware:
 
-  ```C#
+```
   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   {
       loggerFactory.AddConsole();
@@ -110,11 +99,14 @@
           await context.Response.WriteAsync("Hello World!");
       });
   }
-  ### Create a Static Page
 ```
+
+![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/use-static-page.gif)
+
+### Create a Static Page
 - Create a file called `index.html` with the following contents in the `wwwroot` folder:
 
-  ```html
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -122,7 +114,7 @@
     <title></title>
 </head>
 <body>
-    <h1> Hello Again!</h1>
+    <h1>This is Index Page!</h1>
 </body>
 </html>
   ```
@@ -130,21 +122,18 @@
 - Run the application and navigate to the root. It should show the hello world middleware.
 - Navigate to `index.html` and it should show the static page in `wwwroot`.
 
-// TODO: Add a Gif moving from root to /index.html to show the difference
+![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/navigate-index.gif)
 <br><br>
 
 ## Adding default document support
 
 - Change the static files middleware in `Startup.cs` from `app.UseStaticFiles()` to `app.UseFileServer()`.
 
-// Gif here
-
 - Run the application. The default page `index.html` should show when navigating to the root of the site.
 
 - You can also enable directory browsing by change`app.UseFileServer()` to 
 `app.UseFileServer(enableDirectoryBrowsing: true)`
 
-//Gif here
 
 <br><br>
 
@@ -152,7 +141,7 @@
 
 - The Environment Variables located at the Debug section of the Application Properties
 
-// Navigate to Env Variable Gif
+![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/env.gif)
   
 - Add some code to the `Configure` method in `Startup.cs` to print out the environment name. Make sure you comment out the UseFileServer middleware. Otherwise you'll still get the same default static page.
 
@@ -166,7 +155,7 @@
 - Run the application and it should print out `Hello World! Development`. 
 - Change the application to run in the `Production` environment by changing the `ASPNETCORE_ENVIRONMENT` environment variable on the `Debug` property page:
 
-// Gif of change Development to Production
+![](https://raw.githubusercontent.com/AlexTang0620/aspdotnet_gif/master/module2-gif/dev-to-prod.gif)
 
 - Run the application and it should print out `Hello World! Production`.
 
